@@ -145,10 +145,6 @@ This project is licensed under the [MIT License](LICENSE).
 
 ### Main Interface
 ![Main Interface](screenshots/main_interface.png)
-
-### Download Logs
-![Download Logs](screenshots/download_logs.png)
-
 ---
 
 Feel free to contribute by opening issues or creating pull requests. 😊
