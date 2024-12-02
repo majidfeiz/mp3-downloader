@@ -194,6 +194,7 @@ class MP3DownloaderApp:
             row_id = index + 1
             url = row["فایل"]
             ssn = row["کد ملی"]
+            call_date = row["تاریخ شروع تماس"]
 
             if pd.isna(url):
                 self.log_message(f"Row {row_id}: Empty.")
@@ -209,7 +210,7 @@ class MP3DownloaderApp:
                     self.reset_buttons()
                     return
 
-            filename = f"{row_id}_{ssn}_{os.path.basename(url)}"
+            filename = f"{row_id}_{ssn}_{call_date}_{os.path.basename(url)}"
             output_path = os.path.join(self.download_directory, filename)
             os.makedirs(self.download_directory, exist_ok=True)
 
