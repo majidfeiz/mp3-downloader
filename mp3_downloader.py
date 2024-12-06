@@ -40,6 +40,9 @@ class MP3DownloaderApp:
         self.stop_button = tk.Button(root, text="Stop", command=self.stop_download, state=tk.DISABLED, bg="lightgray", fg="black")
         self.stop_button.pack(pady=5)
 
+        self.reset_button = tk.Button(root, text="Reset Logs", command=self.reset_logs, bg="lightgray", fg="black")
+        self.reset_button.pack(pady=5)
+
         self.log_label = tk.Label(root, text="Download Logs:", font=("Helvetica", 12), bg="white", fg="black")
         self.log_label.pack(pady=5)
 
@@ -241,6 +244,18 @@ class MP3DownloaderApp:
         self.pause_button.config(state=tk.DISABLED)
         self.stop_button.config(state=tk.DISABLED)
         self.start_button.config(state=tk.NORMAL)
+
+    def reset_logs(self):
+        """Reset logs and prepare for a new Excel file."""
+        if Path(self.download_log_path).exists():
+            os.remove(self.download_log_path)
+        self.log_text.config(state=tk.NORMAL)
+        self.log_text.delete("1.0", tk.END)
+        self.log_text.config(state=tk.DISABLED)
+        self.file_label.config(text="Select an Excel File")
+        self.excel_file_path = None
+        self.start_button.config(state=tk.DISABLED)
+        self.log_message("Logs reset. Ready for a new Excel file!")
 
     def on_closing(self):
         """Handle application close event."""
